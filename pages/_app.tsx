@@ -6,6 +6,9 @@ import { useState } from 'react';
 function MyApp({ Component, pageProps }: AppProps) {
   return <div>
     <button onClick={() => getCocktailSuggestions(['sad','depressed','lonely'])}></button>
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
     <Component {...pageProps} /></div>
 }
 
