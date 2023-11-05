@@ -7,6 +7,9 @@ dotenv.config();
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import OpenAI from 'openai';
+import feelings from './chat-templates/feelings';
+
+let result = feelings()
 
 export default async function handler(
   req: NextApiRequest,
@@ -22,7 +25,7 @@ export default async function handler(
   try {
     // Perform the OpenAI completion
     const chatCompletion = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: 'Can you tell me about json?' }],
+      messages: [{ role: 'user', content: result }],
       model: 'gpt-3.5-turbo',
     });
 
