@@ -9,3 +9,46 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id                  Int                  @id @default(autoincrement())
+  email               String               @unique
+  name                String?
+  image               String?
+  oauthProvider       String
+  oauthId             String               @unique
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  userInputs          UserInput[]
+  cocktailSuggestions CocktailSuggestion[]
+}
+
+model UserInput {
+  id                  Int                  @id @default(autoincrement())
+  mood                String
+  createdAt           DateTime             @default(now())
+  userId              Int // FK to User model
+  user                User                 @relation(fields: [userId], references: [id])
+  cocktailSuggestions CocktailSuggestion[]
+}
+
+model CocktailSuggestion {
+  id           Int         @id @default(autoincrement())
+  ingredients  String // List of ingredients, could be JSON or a delimited string
+  recipe       String // The cocktail recipe, could be JSON or plain text
+  createdAt    DateTime    @default(now())
+  userInputId  Int? // FK to UserInput model, optional if you allow suggestions without user input
+  userInput    UserInput?  @relation(fields: [userInputId], references: [id])
+  userId       Int // FK to User model
+  user         User        @relation(fields: [userId], references: [id])
+  Ingredient   Ingredient? @relation(fields: [ingredientId], references: [id])
+  ingredientId Int?
+}
+
+// If you want to model Ingredients separately (optional)
+model Ingredient {
+  id                  Int                  @id @default(autoincrement())
+  name                String
+  cocktailSuggestions CocktailSuggestion[] // Assuming a many-to-many relationship
+  // You'd need a separate relation table for a true many-to-many
+}
