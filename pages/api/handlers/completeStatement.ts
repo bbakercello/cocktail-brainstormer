@@ -3,8 +3,8 @@ dotenv.config();
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import OpenAI from 'openai';
-import {PromptTemplates} from './chat-templates/templates'
-import { UserInput } from './defs/inputs/userInput';
+import {PromptTemplates} from '../chat-templates/templates'
+import { UserInput } from '../defs/inputs/userInput';
 
 // Here we will need to call some functionality to run a conditional on which template to use.
 

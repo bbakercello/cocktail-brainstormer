@@ -1,6 +1,5 @@
-// pages/api/submit.ts (Example API route in Next.js)
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { UserInput } from './defs/inputs/userInput';
+import { UserInput } from '../defs/inputs/userInput';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {

@@ -1,12 +1,9 @@
-// components/CompletionButton.tsx
-
-import axios from 'axios';
-import { useState } from 'react';
+// This is a handler that calls the complete statement api endpoint
 
 const handleGetCompletion = async () => {
     try {
       // Here we make a call to the API route
-      const response = await fetch('/api/completeStatement', {
+      const response = await fetch('/api/handlers/completeStatement', {
         method: 'POST',
       });
 

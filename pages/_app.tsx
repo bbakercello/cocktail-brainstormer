@@ -1,8 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { SetStateAction, useEffect, useState } from 'react';
-import handleGetCompletion from './api/handleGetCompletion';
-import { getCocktailSuggestions } from './api/getCocktailSuggestions';
+import handleGetCompletion from './api/handlers/handleGetCompletion';
+import { getCocktailSuggestions } from './api/handlers/getCocktailSuggestions';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // State for the input value
