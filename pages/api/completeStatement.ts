@@ -1,15 +1,20 @@
-// pages/api/completeStatement.ts
 import * as dotenv from 'dotenv';
 dotenv.config();
-
-
-// pages/api/completeStatement.ts
-
 import type { NextApiRequest, NextApiResponse } from 'next';
-import OpenAI from 'openai';
-import feelings from './chat-templates/feelings';
 
-let result = feelings()
+import OpenAI from 'openai';
+import {PromptTemplates} from './chat-templates/templates'
+import { UserInput } from './defs/inputs/userInput';
+
+// Here we will need to call some functionality to run a conditional on which template to use.
+
+// Here we need to pass in the input from the frontend through req.body on a form submit
+const userInput: UserInput = {
+  input: "I feel like something tropical and refreshing",
+};
+
+// establish input as variable to pass to open AI with prompt  
+const input = PromptTemplates.feelingsPrompt(userInput);
 
 export default async function handler(
   req: NextApiRequest,
@@ -25,7 +30,7 @@ export default async function handler(
   try {
     // Perform the OpenAI completion
     const chatCompletion = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: result }],
+      messages: [{ role: 'user', content: input }],
       model: 'gpt-3.5-turbo',
     });
 

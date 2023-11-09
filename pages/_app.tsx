@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import handleGetCompletion from './api/handleGetCompletion';
 import { getCocktailSuggestions } from './api/getCocktailSuggestions';
 
@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [value, setValue] = useState('');
 
 // Function to handle input changes
-const handleChange = (e) => {
+const handleChange = (e: { target: { value: SetStateAction<string>; }; }) => {
   setValue(e.target.value);
 };
 
