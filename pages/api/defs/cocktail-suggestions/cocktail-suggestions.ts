@@ -1,6 +1,6 @@
 // models/CocktailSuggestion.ts
 import { UserInput } from '../inputs/userInput'; // Assuming you have a UserInput class
-import { User } from '../User';
+import { User } from '../users/User';
 import { Ingredient } from './ingredient'; // Assuming you have an Ingredient class
 
 export class CocktailSuggestion {

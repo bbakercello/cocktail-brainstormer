@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { SetStateAction, useEffect, useState } from 'react';
 import handleGetCompletion from './api/handlers/gptHandleGetCompletion';
-import { getCocktailSuggestions } from './api/handlers/cktGetSuggestion';
+import { getMultiIngred } from './api/handlers/cktGetMultiIngred';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // State for the input value
@@ -30,7 +30,7 @@ const displayValue = () => {
       <button className="text-zinc-200" onClick={displayValue}>
         Display Value
       </button>
-      <button className="text-zinc-200" onClick={getCocktailSuggestions}>
+      <button className="text-zinc-200" onClick={getMultiIngred}>
         Gin
       </button>
       <h1 className="text-3xl font-bold underline">

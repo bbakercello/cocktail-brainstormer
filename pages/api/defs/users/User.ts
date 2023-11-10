@@ -1,7 +1,7 @@
 // models/User.ts
 
-import { CocktailSuggestion } from "./cocktail-suggestions/cocktail-suggestions";
-import { UserInput } from "./inputs/userInput";
+import { CocktailSuggestion } from "../cocktail-suggestions/cocktail-suggestions";
+import { UserInput } from "../inputs/userInput";
 
 export class User {
   id: number;

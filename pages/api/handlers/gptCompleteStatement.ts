@@ -16,7 +16,7 @@ const userInput: UserInput = {
 // establish input as variable to pass to open AI with prompt  
 const input = PromptTemplates.feelingsPrompt(userInput);
 
-export default async function handler(
+export default async function completeStatementHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

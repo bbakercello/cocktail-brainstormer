@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { UserInput } from '../defs/inputs/userInput';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function chatHandler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     // Assuming you're sending data as a JSON object
     const userInput: UserInput = req.body;
