@@ -3,9 +3,6 @@ import type { AppProps } from 'next/app';
 import { SetStateAction, useEffect, useState } from 'react';
 import handleGetCompletion from './api/handlers/gptHandleGetCompletion';
 import { getMultiIngred } from './api/handlers/cktGetMultiIngred';
-import { createRedisInstance } from '../redis';
-
-const redis = createRedisInstance();
 
 
 
@@ -18,11 +15,22 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   setValue(e.target.value);
 };
 
-// Function to cache and display the input value
-const handleCacheResponse = async () => {
-  await redis.set('userInput', inputValue);
-  const value = await redis.get('userInput');
-  console.log(value); // Should log the value of 'userInput'
+// Function to handle setting a value in Redis
+const handleSetRedisValue = async () => {
+  await fetch('/api/redis', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ key: 'userInput', value: inputValue }),
+  });
+};
+
+// Function to handle getting a value from Redis
+const handleGetRedisValue = async () => {
+  const response = await fetch(`/api/redis?key=userInput`);
+  const data = await response.json();
+  console.log(data.value); // The value from Redis
 };
 
   return (
@@ -34,7 +42,7 @@ const handleCacheResponse = async () => {
         <input type="text" value={inputValue} placeholder="Type here..." onChange={handleChange} />
       </div>
       {/* Button to display the input value */}
-      <button className="text-zinc-200" onClick={handleCacheResponse}>
+      <button className="text-zinc-200" onClick={handleSetRedisValue}>
         Display Value
       </button>
       <button className="text-zinc-200" onClick={getMultiIngred}>
