@@ -16,10 +16,12 @@ const userInput: UserInput = {
 // establish input as variable to pass to open AI with prompt  
 const input = PromptTemplates.feelingsPrompt(userInput);
 
-export default async function completeStatementHandler(
+export default async function gptCompleteStatementHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+
+  console.log(process.env)
   // Initialize the OpenAI client with your API key
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,

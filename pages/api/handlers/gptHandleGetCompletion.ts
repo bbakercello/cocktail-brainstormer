@@ -3,7 +3,7 @@
 const handleGetCompletion = async () => {
     try {
       // Here we make a call to the API route
-      const response = await fetch('/api/handlers/gptGetCompleteStatement', {
+      const response = await fetch('/api/handlers/gptCompleteStatement', {
         method: 'POST',
       });
 
