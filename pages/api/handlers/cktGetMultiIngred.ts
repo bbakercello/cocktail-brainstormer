@@ -1,10 +1,10 @@
 // services/getCocktailSuggestions.js
 import { axiosRequest } from "../utils/axios-connect";
+let apiHost = process.env.X_RAPIDAPI
+let apiKey = process.env.X_RAPIDAPI_KEY
+export const getMultiIngred = async (ingredients: string[]): Promise<any[]> => {
+    const convertArrayToString = (array: string[]) => array.join(', ');
 
-export const getMultiIngred = async (): Promise<any[]> => {
-    const convertArrayToString = (array: any[]) => array.join(', ');
-
-    const ingredients = ['Dry Vermouth', 'Gin', 'Anis'];
     const paramString = convertArrayToString(ingredients);
     const params = { i: paramString };
     
@@ -13,8 +13,8 @@ export const getMultiIngred = async (): Promise<any[]> => {
         url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
         params: params,
         headers: {
-            'X-RapidAPI-Key': '991e79e7e6msh7d055065a1d1f6dp1056d0jsnbb3ac970d78b',
-            'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
+            'X-RapidAPI-Key': `${apiKey}`, // Ensure apiKey is defined and accessible
+            'X-RapidAPI-Host': `${apiHost}` // Ensure apiHost is defined and accessible
         }
     };
 

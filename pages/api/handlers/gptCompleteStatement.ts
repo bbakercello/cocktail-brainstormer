@@ -39,7 +39,6 @@ export default async function gptCompleteStatementHandler(
     // Send the completion data back to the client
     res.status(200).json(chatCompletion);
     console.log(chatCompletion)
-
     // TODO: Set the global state of the content in order to pass to getCocktailSuggestions.ts
   } catch (error) {
     // Handle any errors by sending an error response

@@ -33,6 +33,7 @@ const handleGetRedisValue = async () => {
   console.log(data.value); // The value from Redis
 };
 
+
   return (
     <div>
       <button className="text-zinc-200" onClick={handleGetCompletion}>
@@ -45,7 +46,7 @@ const handleGetRedisValue = async () => {
       <button className="text-zinc-200" onClick={handleSetRedisValue}>
         Display Value
       </button>
-      <button className="text-zinc-200" onClick={getMultiIngred}>
+      <button className="text-zinc-200" onClick={() => getMultiIngred(ingredients)}>
         Gin
       </button>
       <h1 className="text-3xl font-bold underline">
