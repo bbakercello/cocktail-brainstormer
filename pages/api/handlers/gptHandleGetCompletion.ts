@@ -1,5 +1,5 @@
 // This is a handler that calls the complete statement api endpoint
-import { gptResponseAtom } from '../../jotai/mainAtom';
+import { gptResponseAtom } from '../../jotai/gptResponseAtom';
 import { useAtom } from 'jotai';
 
 
