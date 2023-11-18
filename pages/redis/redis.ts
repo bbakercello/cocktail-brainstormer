@@ -1,3 +1,5 @@
+//  Redis  boilerplate for future implimentation
+
 import Redis, { RedisOptions } from 'ioredis';
 import configuration from '../../configuration';
  
@@ -58,3 +60,23 @@ export default async function handler(req: { method: string; body: { key: any; v
     res.status(200).json({ value });
   }
 }
+
+/*
+/ Function to handle setting a value in Redis
+const handleSetRedisValue = async () => {
+  await fetch('/api/redis', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ key: 'userInput', value: inputValue }),
+  });
+};
+
+// Function to handle getting a value from Redis
+const handleGetRedisValue = async () => {
+  const response = await fetch(`/api/redis?key=userInput`);
+  const data = await response.json();
+  console.log(data.value); // The value from Redis
+};
+*/

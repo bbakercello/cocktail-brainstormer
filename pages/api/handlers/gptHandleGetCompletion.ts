@@ -13,11 +13,12 @@ const handleGetCompletion = async () => {
 
       // Parse the JSON returned by the API route
       const data = await response.json();
-      setGptResponses(prev => [...prev, data]);
       
+
       if (response.ok) {
         // Handle the data as needed
         console.log('Completion:', data);
+        setGptResponses(prev => [...prev, data]);
       } else {
         // Handle errors if the response is not ok
         console.error('API route returned an error', data.error);

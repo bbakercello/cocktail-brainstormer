@@ -2,10 +2,15 @@
 import { axiosRequest } from "../utils/axios-connect";
 let apiHost = process.env.X_RAPIDAPI
 let apiKey = process.env.X_RAPIDAPI_KEY
-export const getMultiIngred = async (ingredients: string[]): Promise<any[]> => {
+import { gptResponseAtom } from "../../jotai/mainAtom";
+import { useAtom } from "jotai";
+
+export const getMultiIngred = async (): Promise<any[]> => {
+    const [gptResponse, setGptResponse] = useAtom(gptResponseAtom);
+    
     const convertArrayToString = (array: string[]) => array.join(', ');
 
-    const paramString = convertArrayToString(ingredients);
+    const paramString = convertArrayToString(gptResponse);
     const params = { i: paramString };
     
     const options = {
