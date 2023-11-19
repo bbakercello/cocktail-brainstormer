@@ -5,6 +5,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 export const axiosRequest = async (options: AxiosRequestConfig): Promise<any> => {
     try {
         const response = await axios.request(options);
+        console.log(response.data)
         return response.data;
     } catch (error: unknown) {
         if (axios.isAxiosError(error)) {

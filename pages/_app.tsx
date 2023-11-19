@@ -1,8 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { SetStateAction, useEffect, useState } from 'react';
-import handleGetCompletion from './api/handlers/gptHandleGetCompletion';
-import { getMultiIngred } from './api/handlers/cktGetMultiIngred';
+import { GetGPTResponse } from './api/handlers/gptHandleGetCompletion';
+import CocktailSuggestions from './api/handlers/cktGetMultiIngred';
 
 
 
@@ -17,18 +17,13 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
   return (
     <>
-      <button className="text-zinc-200" onClick={handleGetCompletion}>
-        Chat
-      </button>
+    <div className="bg-cyan-400">
+      <GetGPTResponse/>
       <div>
         <input type="text" value={inputValue} placeholder="Type here..." onChange={handleChange} />
       </div>
-
-    <button className="text-zinc-200" onClick={() => getMultiIngred}>
-        Gin
-      </button><h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1><Component {...pageProps} />
+    <CocktailSuggestions/>
+      </div>
       </>
   );
 }
